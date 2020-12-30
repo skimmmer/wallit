@@ -1,0 +1,80 @@
+{
+    "title": "Wall",
+    "description": "Climbing wall definition",
+    "type":"object",
+    "properties": {
+        "name": {
+            "description": "Name of climbing wall",
+            "type": "string"
+        },
+        "climbers": {
+            "description": "Names of climbers",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "location": {
+            "description": "Location of the climbing wall",
+            "type": "string"
+        },
+        "size": {
+            "type": "object",
+            "properties": {
+                "width": {
+                    "type": "integer"
+                },
+                "height": {
+                    "type": "integer"
+                }
+            },
+            "required": ["width", "height"]
+        },
+        "sets": {
+            "description": "Names/tags of current sets",
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "minItems": 1,
+            "uniqueItems": true
+        },
+        "lights": {
+            "description": "Mapping of light index (0 based) to x/y position",
+            "type": "object",
+            "properties": {
+                "rows": {
+                    "description": "Remap each row to a particular start index",
+                    "type": "array",
+                    "items": {
+                        "description": "Index row starts at (minimum y)",
+                        "type": "integer"
+                    }
+                },
+                "columns": {
+                    "description": "Remap each column to a particular start index",
+                    "type": "array",
+                    "items": {
+                        "description": "Index column starts at (minimum x)",
+                        "type": "integer"
+                    }
+                },
+                "matrix": {
+                    "description": "Complete remapping of each x/y coordinate",
+                    "type": "array",
+                    "items": {
+                        "description": "Row",
+                        "type": "array",
+                        "items": {
+                            "description": "Row/Column index",
+                            "type": "integer"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": ["name", "size"]
+}
